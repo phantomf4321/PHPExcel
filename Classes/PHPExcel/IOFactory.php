@@ -108,8 +108,8 @@ class PHPExcel_IOFactory
      * @static
      * @access    public
      * @param    string $type        Example: IWriter
-     * @param    string $location    Example: PHPExcel/Writer/{0}.php
-     * @param    string $classname     Example: PHPExcel_Writer_{0}
+     * @param    string $location    Example: PHPExcel/Writer/[0].php
+     * @param    string $classname     Example: PHPExcel_Writer_[0]
      */
     public static function addSearchLocation($type = '', $location = '', $classname = '')
     {
@@ -134,7 +134,7 @@ class PHPExcel_IOFactory
         // Include class
         foreach (self::$searchLocations as $searchLocation) {
             if ($searchLocation['type'] == $searchType) {
-                $className = str_replace('{0}', $writerType, $searchLocation['class']);
+                $className = str_replace('[0]', $writerType, $searchLocation['class']);
 
                 $instance = new $className($phpExcel);
                 if ($instance !== null) {
@@ -164,7 +164,7 @@ class PHPExcel_IOFactory
         // Include class
         foreach (self::$searchLocations as $searchLocation) {
             if ($searchLocation['type'] == $searchType) {
-                $className = str_replace('{0}', $readerType, $searchLocation['class']);
+                $className = str_replace('[0]', $readerType, $searchLocation['class']);
 
                 $instance = new $className();
                 if ($instance !== null) {
